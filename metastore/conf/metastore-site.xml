@@ -1,0 +1,61 @@
+<configuration>
+
+    <!-- Metastore Properties -->
+    <property>
+        <name>metastore.thrift.uris</name>
+        <value>thrift://hive-metastore:9083</value>
+        <description>Thrift URI for the remote metastore. Used by metastore client to connect to remote metastore.</description>
+    </property>
+
+    <property>
+        <name>metastore.task.threads.always</name>
+        <value>org.apache.hadoop.hive.metastore.events.EventCleanerTask,org.apache.hadoop.hive.metastore.MaterializationsCacheCleanerTask</value>
+    </property>
+
+    <property>
+        <name>metastore.expression.proxy</name>
+        <value>org.apache.hadoop.hive.metastore.DefaultPartitionExpressionProxy</value>
+    </property>
+
+
+    <!-- MariaDB Connection -->
+    <property>
+        <name>javax.jdo.option.ConnectionDriverName</name>
+        <value>com.mysql.cj.jdbc.Driver</value>
+    </property>
+
+    <property>
+        <name>javax.jdo.option.ConnectionURL</name>
+        <value>jdbc:mysql://mariadb:3306/metastore_db</value>
+    </property>
+
+    <property>
+        <name>javax.jdo.option.ConnectionUserName</name>
+        <value>admin</value>
+    </property>
+
+    <property>
+        <name>javax.jdo.option.ConnectionPassword</name>
+        <value>admin</value>
+    </property>
+
+
+    <!-- File System Properties -->
+    <property>
+        <name>fs.s3a.path.style.access</name>
+        <value>true</value>
+    </property>
+
+    <property>
+        <name>fs.s3a.impl</name>
+        <value>org.apache.hadoop.fs.s3a.S3AFileSystem</value>
+    </property>
+
+
+    <!-- Azure ADLS2 Credentials -->
+    <property>
+        <name>fs.azure.account.key.{{ adls account name }}.dfs.core.windows.net</name>
+        <value>{{ adls account key }}</value>
+    </property>
+
+</configuration>
